@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+</head>
+
+<body>
+    <a href="/logout">Logout</a>
+
+<h2>Admin Dashboard</h2>
+
+<form action="/add" method="POST">
+    <input name="match" placeholder="Match" required>
+    <input name="prediction" placeholder="Prediction" required>
+    <input name="odds" placeholder="Odds" required>
+
+    <select name="category">
+        <option value="Free">Free</option>
+        <option value="VIP">VIP</option>
+    </select>
+
+    <button type="submit">Add Tip</button>
+</form>
+
+<hr>
+
+<h3>Existing Tips</h3>
+
+{% for tip in tips %}
+<p>
+    {{ tip[1] }} | {{ tip[2] }} | {{ tip[3] }} | {{ tip[4] }}
+    <a href="/delete/{{ tip[0] }}">Delete</a>
+</p>
+{% endfor %}
+
+<hr>
+<h4>VIP Users</h4>
+<table border="1" cellpadding="10" style="margin:auto; background:white; border-radius:10px;">
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Paid Status</th>
+        <th>VIP Expiry</th>
+        <th>Actions</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user[0] }}</td>
+        <td>{{ user[1] }}</td>
+        <td>{{ user[2] }}</td>
+        <td>{{ user[4] }}</td>
+        <td>{{ user[5] if user[5] else 'N/A' }}</td>
+        <td>
+            {% if user[4] == 'No' %}
+            <a href="/mark_paid/{{ user[0] }}">Mark Paid</a>
+            {% else %}
+            <a href="/revoke/{{ user[0] }}">Revoke</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

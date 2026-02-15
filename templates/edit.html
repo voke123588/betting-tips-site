@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Tip</title>
+</head>
+<body style="background:#dff3ff; text-align:center; padding-top:50px;">
+
+<h2>Edit Tip</h2>
+
+<form method="POST" action="/update/{{ tip[0] }}">
+    <input name="match" value="{{ tip[1] }}" required><br><br>
+    <input name="prediction" value="{{ tip[2] }}" required><br><br>
+    <input name="odds" value="{{ tip[3] }}" required><br><br>
+    <select name="category">
+        <option value="Free" {% if tip[4]=='Free' %}selected{% endif %}>Free</option>
+        <option value="VIP" {% if tip[4]=='VIP' %}selected{% endif %}>VIP</option>
+    </select><br><br>
+    <button type="submit">Update Tip</button>
+</form>
+
+<a href="/admin">Back to Admin</a>
+
+</body>
+</html>

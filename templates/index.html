@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Betting Tips</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>🔥 Daily Betting Tips</h1>
+
+{% for tip in tips %}
+<div class="tip">
+    <h3>{{ tip[1] }}</h3>
+    <p>Prediction: {{ tip[2] }}</p>
+    <p>Odds: {{ tip[3] }}</p>
+</div>
+{% endfor %}
+
+    <div class="floating-buttons">
+    <a href="https://wa.me/+254113759431" target="_blank">🟢</a>
+    <a href="https://t.me/your-channel" target="_blank" style="background:#0088cc;">✈️</a>
+</div>
+
+<a href="/vip_login" class="join-btn">VIP Tips (Paid)</a>
+
+    </div>
+
+</body>
+</html>

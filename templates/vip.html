@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VIP Tips</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>🔥 VIP Betting Tips</h1>
+    {% for tip in tips %}
+    <div class="tip">
+        <h3>{{ tip[1] }}</h3>
+        <p>Prediction: {{ tip[2] }}</p>
+        <p>Odds: {{ tip[3] }}</p>
+    </div>
+    {% endfor %}
+    <a href="/vip_logout" class="join-btn">Logout</a>
+</div>
+</body>
+</html>
